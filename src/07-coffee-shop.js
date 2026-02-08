@@ -31,5 +31,62 @@
  * @returns {number} Total price or -1 for invalid input
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
-  // Your code here
+  let totalAmount = 0;
+
+  if (size !== "small" && size !== "medium" && size !== "large") {
+    return -1
+  }
+
+  if (type !== "regular" && type !== "latte" && type !== "cappuccino" && type !== "mocha") {
+    return -1
+  }
+
+  if(size == "small"){
+    if(type == "regular" ){
+      totalAmount = 3 + 0
+    }else if(type == "latte"){
+      totalAmount = 3 + 1
+    }else if(type == "cappuccino"){
+      totalAmount = 3 + 1.5
+    }else if(type == "mocha"){
+      totalAmount = 3 + 2
+    }
+  }else if(size == "medium"){
+    if(type == "regular"){
+      totalAmount = 4 + 0
+    }else if(type == "latte"){
+      totalAmount = 4 + 1
+    }else if(type == "cappuccino"){
+      totalAmount = 4 + 1.5
+    }else if(type == "mocha"){
+      totalAmount = 4 + 2
+    }
+  }else if(size == "large"){
+    if(type == "regular"){
+      totalAmount = 5 + 0
+    }else if(type == "latte"){
+      totalAmount = 5 + 1
+    }else if(type == "cappuccino"){
+      totalAmount = 5 + 1.5
+    }else if(type == "mocha"){
+      totalAmount = 5 + 2
+    }
+  }
+
+  if(Object.keys(extras).length !== 0){
+    if(extras.extraShot && extras.whippedCream){
+      totalAmount = totalAmount + 0.75 + 0.5
+    }else if(extras.extraShot){
+      totalAmount = totalAmount + 0.75
+    }else if(extras.whippedCream){
+      totalAmount = totalAmount + 0.5
+    }
+  }else if(Object.keys(extras).length === 0){
+    return totalAmount
+  }
+
+  return totalAmount
+ 
 }
+
+
